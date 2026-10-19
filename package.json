@@ -1,6 +1,6 @@
 {
   "name": "com.tapp.go.liveactivities",
-  "version": "2.1.1",
+  "version": "2.2.0",
   "displayName": "Tapp Live Activities",
   "description": "Server-configured Live Activities on iOS, without shipping a new app build. Adds the TappLiveActivities API and links the Tapp Live Activities module into your Xcode project. Needs Tapp Core (com.tapp.go) at the same version.",
   "unity": "2022.3",
@@ -17,12 +17,12 @@
     "engagement"
   ],
   "dependencies": {
-    "com.tapp.go": "2.1.1"
+    "com.tapp.go": "2.2.0"
   },
   "hideInEditor": false,
   "repository": {
     "url": "https://github.com/TappRepos/TappLiveActivities-Unity",
     "type": "git",
-    "revision": "76bf6b9ecfe04195d6cbed72c4e2e12066a6b528"
+    "revision": "d972adb0314960f1b8ff0f4c4a66c943b4941b16"
   }
 }
