@@ -10,8 +10,8 @@ install it without the Widgets package and your app does not carry the widgets l
 ```json
 {
   "dependencies": {
-    "com.tapp.go": "https://github.com/tappgo/tapp-unity.git#v2.1.1",
-    "com.tapp.go.liveactivities": "https://github.com/tappgo/tapp-liveactivities-unity.git#v2.1.1"
+    "com.tapp.go": "https://github.com/tappgo/tapp-unity.git#v2.2.0",
+    "com.tapp.go.liveactivities": "https://github.com/tappgo/tapp-liveactivities-unity.git#v2.2.0"
   }
 }
 ```
@@ -55,6 +55,12 @@ foreach (var card in TappLiveActivities.Active().Value) { … } // read from iOS
 `"screen-2"` puts a second card up beside the first rather than moving it, and updates and ends name the pair.
 `TappLiveActivities.Active()` reports both halves for everything that is up, which is what makes a card
 started before a relaunch drivable without your keeping notes.
+
+**Calls for the same card run in the order you make them**, from 2.1.2, which pins the iOS SDK at 2.2.3: an
+`End` issued right after its `Start`, before the start's callback has run, waits for the start and then ends
+the card. Through 2.1.1 that end could answer `Ok` for a card that was not up yet and leave it running, so on
+those versions chain the end off the start's callback. Calls for different cards, and everything else, are
+independent of one another.
 
 **On Android** every call answers `liveActivitiesUnavailable` — no `#if` needed — and this package adds
 nothing to the Android build.
