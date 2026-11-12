@@ -10,8 +10,8 @@ install it without the Widgets package and your app does not carry the widgets l
 ```json
 {
   "dependencies": {
-    "com.tapp.go": "https://github.com/tappgo/tapp-unity.git#v2.2.0",
-    "com.tapp.go.liveactivities": "https://github.com/tappgo/tapp-liveactivities-unity.git#v2.2.0"
+    "com.tapp.go": "https://github.com/tappgo/tapp-unity.git#v2.3.0",
+    "com.tapp.go.liveactivities": "https://github.com/tappgo/tapp-liveactivities-unity.git#v2.3.0"
   }
 }
 ```
