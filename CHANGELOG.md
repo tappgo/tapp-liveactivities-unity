@@ -3,6 +3,19 @@
 All notable changes to `com.tapp.go.liveactivities`. Follows [Semantic Versioning](https://semver.org). Every Tapp package is
 released at one version, and needs Tapp Core (`com.tapp.go`) at that same version.
 
+## [2.3.0] — unreleased
+
+Resolves iOS `tappgo/tapp-ios` **2.5.0** and Android `com.tappgo` **2.3.0**, as pinned by Tapp Core. No change to this
+package's API, and neither native release changes a Live Activity: it is released to keep the three at one version.
+
+### Changed
+
+- **The mirror's `main` follows each release.** `tappgo/tapp-liveactivities-unity`'s `main` showed 2.1.1 while 2.2.0 was the
+  latest tag, because `main` takes changes only through a pull request and a release pushed its tag alone.
+  The release now also opens that pull request: `release/vX.Y.Z-main`, one commit on `main` carrying the tag's
+  tree exactly, titled `com.tapp.go.liveactivities X.Y.Z`, for a person to approve and squash-merge. The tag stays what
+  an install names (`#vX.Y.Z`); nothing changes in the package.
+
 ## [2.2.0] — 2026-10-19
 
 Resolves iOS `tappgo/tapp-ios` **2.3.0** and Android `com.tappgo` **2.2.0**, as pinned by Tapp Core, both released on
