@@ -3,7 +3,20 @@
 All notable changes to `com.tapp.go.liveactivities`. Follows [Semantic Versioning](https://semver.org). Every Tapp package is
 released at one version, and needs Tapp Core (`com.tapp.go`) at that same version.
 
-## [2.3.0] — unreleased
+## [2.3.1] — 2026-11-17
+
+Resolves iOS `tappgo/tapp-ios` **2.5.1** and Android `com.tappgo` **2.3.1**, as pinned by Tapp Core. No change to this
+package's API or settings.
+
+- **iOS: a card's update token now reaches Tapp while the game is closed.** When Tapp starts a card while the game is
+  closed, or the player allows Live Activities from the card, iOS launches the game in the background for a few
+  seconds. C# does not run in that launch, so until now the token waited for the player to open the game, and Tapp
+  could not update or end the card in the meantime. The iOS SDK 2.5.1 reports the token from that launch itself, for a
+  game that has called `Tapp.Configure` before. Nothing to change in your code. iOS hands the token over only once the
+  player has allowed Live Activities, and with no user set (`Tapp.SetUserId`) nothing is sent.
+- Android has no Live Activities, so nothing changes there.
+
+## [2.3.0] — 2026-11-12
 
 Resolves iOS `tappgo/tapp-ios` **2.5.0** and Android `com.tappgo` **2.3.0**, as pinned by Tapp Core. No change to this
 package's API, and neither native release changes a Live Activity: it is released to keep the three at one version.
