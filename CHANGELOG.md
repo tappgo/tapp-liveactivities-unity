@@ -8,11 +8,10 @@ released at one version, and needs Tapp Core (`com.tapp.go`) at that same versio
 Resolves iOS `tappgo/tapp-ios` **2.5.1** and Android `com.tappgo` **2.3.1**, as pinned by Tapp Core. No change to this
 package's API or settings.
 
-- **iOS: a card's update token now reaches Tapp while the game is closed.** When Tapp starts a card while the game is
+- **iOS: a card's update token reaches Tapp while the game is closed.** When Tapp starts a card while the game is
   closed, or the player allows Live Activities from the card, iOS launches the game in the background for a few
-  seconds. C# does not run in that launch, so until now the token waited for the player to open the game, and Tapp
-  could not update or end the card in the meantime. The iOS SDK 2.5.1 reports the token from that launch itself, for a
-  game that has called `Tapp.Configure` before. Nothing to change in your code. iOS hands the token over only once the
+  seconds. C# does not run in that launch, so the iOS SDK 2.5.1 reports the token from it itself, for a game that has
+  called `Tapp.Configure` before, and Tapp can update and end the card straight away. Nothing to change in your code. iOS hands the token over only once the
   player has allowed Live Activities, and with no user set (`Tapp.SetUserId`) nothing is sent.
 - Android has no Live Activities, so nothing changes there.
 
@@ -23,9 +22,8 @@ package's API, and neither native release changes a Live Activity: it is release
 
 ### Changed
 
-- **The mirror's `main` follows each release.** `tappgo/tapp-liveactivities-unity`'s `main` showed 2.1.1 while 2.2.0 was the
-  latest tag, because `main` takes changes only through a pull request and a release pushed its tag alone.
-  The release now also opens that pull request: `release/vX.Y.Z-main`, one commit on `main` carrying the tag's
+- **The mirror's `main` follows each release.** `main` on `tappgo/tapp-liveactivities-unity` takes changes only
+  through a pull request, so each release now also opens one: `release/vX.Y.Z-main`, one commit on `main` carrying the tag's
   tree exactly, titled `com.tapp.go.liveactivities X.Y.Z`, for a person to approve and squash-merge. The tag stays what
   an install names (`#vX.Y.Z`); nothing changes in the package.
 
@@ -33,8 +31,8 @@ package's API, and neither native release changes a Live Activity: it is release
 
 Resolves iOS `tappgo/tapp-ios` **2.3.0** and Android `com.tappgo` **2.2.0**, as pinned by Tapp Core, both released on
 2026-10-19. No change to this package's API: it is released to keep the three at one version. Nothing a card shows
-changes with it: the iOS SDK 2.3.0 decodes a **pool** (an image or text node published with several candidates, one
-drawn per resolution of the card's content) so a card never fails to decode one, but the Live Activity editor
+changes with it: the iOS SDK 2.3.0 reads a **pool** (an image or text node published with several candidates, one
+drawn per resolution of the card's content), but the Live Activity editor
 publishes no pools today, and Live Activity content is not published per language, so `Tapp.SetLanguage` (new in
 Tapp Core 2.2.0) does not affect a card.
 
@@ -42,10 +40,9 @@ Tapp Core 2.2.0) does not affect a card.
 
 Resolves iOS `tappgo/tapp-ios` **2.2.3** and Android `com.tappgo` **2.1.1**, as pinned by Tapp Core.
 
-- **An `End` issued right after its `Start` now ends the card.** `Start`, `Update` and `End` for the same card
-  take effect in the order you call them; before, each ran on its own, and an end that reached iOS before the
-  start had put the card up answered `Ok` and left the card running. Nothing to change in your code: chaining
-  the end off the start's callback still works and is no longer needed. Fixed in the iOS SDK 2.2.3.
+- **Calls for the same card take effect in the order you make them.** `Start`, `Update` and `End` for the same
+  card run in call order, so an `End` issued right after its `Start` ends the card. Nothing to change in your code:
+  chaining the end off the start's callback still works and is no longer needed. From the iOS SDK 2.2.3.
 
 ## [2.1.1] — 2026-10-11
 
